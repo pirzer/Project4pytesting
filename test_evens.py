@@ -1,14 +1,17 @@
-def even_number_of_evens(numbers):
-    """
-    Should Raise a TypeError if a list in not passed into the function
-    error message: "A list was not passed into the function"
-    if the list is empty it will return False
-    if the number of even numbers is odd - return False
-    if the numner of even numbers is even - return True
-    """
+import unittest
+from evens import even_number_of_evens
 
-    return None
+
+class TestEvens(unittest.TestCase):
+    def test_throws_error_if_value_passed_in_is_not_list(self):
+        self.assertRaises(TypeError, even_number_of_evens, 4)
+
+    def test_values_in_list(self):
+        self.assertEqual(even_number_of_evens([]), False)
+        self.assertEqual(even_number_of_evens([2, 4]), True)
+        self.assertEqual(even_number_of_evens([2]), False)
+        self.assertEqual(even_number_of_evens([1, 3, 5]), False)
 
 
 if __name__ == "__main__":
-    print(even_number_of_evens(5))
+    unittest.main()
